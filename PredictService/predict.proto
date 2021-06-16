@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_package = "com.microservice.k8sclient.grpc";
+option java_multiple_files = true;
+option java_outer_classname = "PredictResourceProto";
+
+message historyStruct{
+	double timestamp = 1;
+	double value = 2;
+}
+message historyReq {
+    repeated historyStruct data = 1;
+}
+
+message predictResp {
+    repeated double result = 1;
+}
+
+service PredictResource {
+    rpc Predict (historyReq) returns (predictResp);
+}
